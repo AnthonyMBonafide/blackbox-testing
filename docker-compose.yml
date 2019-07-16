@@ -6,9 +6,9 @@ volumes:
   log-data:
   consul-config:
   consul-data:
-  vault-config:  
+  vault-config:
   vault-file:
-  vault-logs:  
+  vault-logs:
   newman:
 
 services:
@@ -96,9 +96,9 @@ services:
     depends_on:
       - volume
       - consul
-      - vault  
+      - vault
 
-# containers for reverse proxy 
+# containers for reverse proxy
   kong-db:
     image: ${kongdb}
     container_name: kong-db
@@ -155,13 +155,13 @@ services:
     networks:
         - edgex-network
     volumes:
-        - vault-config:/vault/config 
+        - vault-config:/vault/config
     depends_on:
         - vault
         - kong-db
         - kong
- 
-# end of containers for reverse proxy    
+
+# end of containers for reverse proxy
 
   mongo:
     image: ${mongo}
@@ -355,8 +355,8 @@ services:
     - log-data:/edgex/logs
     - consul-config:/consul/config
     - consul-data:/consul/data
-    depends_on:
-    - export-distro
+    # depends_on:
+    # - export-distro
 
   #################################################################
   # Device Services
@@ -377,9 +377,9 @@ services:
     - log-data:/edgex/logs
     - consul-config:/consul/config
     - consul-data:/consul/data
-    depends_on:
-    - data
-    - command
+    #depends_on:
+    #- data
+    #- command
 
   postman:
     image: ${postman}

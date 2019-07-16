@@ -25,4 +25,3 @@ export kong=kong:0.13.0
 export edgexProxy=nexus3.edgexfoundry.org:10004/docker-edgex-proxy-go:0.2.1
 
 export postman=postman/newman
-

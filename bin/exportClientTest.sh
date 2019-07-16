@@ -5,11 +5,11 @@ NAMESFILE=$(dirname "$0")/files.sh
 COLLECTION_PATH="collections/export-client.postman_collection.json"
 ENV_PATH="environment/export-client-docker.postman_environment.json"
 
-if [ -f $NAMESFILE ]; then 
+if [ -f $NAMESFILE ]; then
 
 	. $NAMESFILE
 
-else 
+else
 	echo "Error: Names file does not exist."
 	exit $?
 
@@ -26,7 +26,7 @@ docker-compose run --rm postman run ${COLLECTION_PATH} \
 docker-compose run --rm postman run ${COLLECTION_PATH} \
     --folder="registration_error_4xx" --iteration-data="data/exportClientData.json" --environment=${ENV_PATH} \
     --reporters="junit,cli"
-    
+
 docker-compose run --rm postman run ${COLLECTION_PATH} \
     --folder="ping" --iteration-data="data/exportClientData.json" --environment=${ENV_PATH} \
     --reporters="junit,cli"

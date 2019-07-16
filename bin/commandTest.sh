@@ -5,11 +5,11 @@ NAMESFILE=$(dirname "$0")/files.sh
 COLLECTION_PATH="collections/core-command.postman_collection.json"
 ENV_PATH="environment/core-command-docker.postman_environment.json"
 
-if [ -f $NAMESFILE ]; then 
+if [ -f $NAMESFILE ]; then
 
 	. $NAMESFILE
 
-else 
+else
 	echo "Error: Names file does not exist."
 	exit $?
 

@@ -5,11 +5,11 @@ NAMESFILE=$(dirname "$0")/files.sh
 COLLECTION_PATH="collections/core-metadata.postman_collection.json"
 ENV_PATH="environment/core-metadata-docker.postman_environment.json"
 
-if [ -f $NAMESFILE ]; then 
+if [ -f $NAMESFILE ]; then
 
 	. $NAMESFILE
 
-else 
+else
 	echo "Error: Names file does not exist."
 	exit $?
 
@@ -24,20 +24,20 @@ echo "[info] ======================== Start run metaData test - addressable ====
 docker-compose run --rm postman run ${COLLECTION_PATH} \
     --folder="addressable" --iteration-data="data/addressableData.json" --environment=${ENV_PATH} \
     --reporters="junit,cli"
-    
+
 docker-compose run --rm postman run ${COLLECTION_PATH} \
     --folder="addressable_error_4xx" --iteration-data="data/addressableData.json" --environment=${ENV_PATH} \
-    --reporters="junit,cli"    
+    --reporters="junit,cli"
 
 echo "[info] ======================== Start run metaData test - command ========================"
 
 docker-compose run --rm postman run ${COLLECTION_PATH} \
     --folder="command" --iteration-data="data/commandData.json" --environment=${ENV_PATH} \
-    --reporters="junit,cli"  
+    --reporters="junit,cli"
 
 docker-compose run --rm postman run ${COLLECTION_PATH} \
     --folder="command_error_4xx" --iteration-data="data/commandData.json" --environment=${ENV_PATH} \
-    --reporters="junit,cli"  
+    --reporters="junit,cli"
 
 echo "[info] ======================== Start run metaData test - device ========================"
 
@@ -90,4 +90,3 @@ docker-compose run --rm postman run ${COLLECTION_PATH} \
     --reporters="junit,cli"
 
 echo "Info: Metadata Test completed."
-

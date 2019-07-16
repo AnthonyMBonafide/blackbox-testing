@@ -8,7 +8,7 @@ if [ $? -ne 0 ]; then
 	echo "Error: Docker login failed."
 	exit 0
 else
-	nohup docker-compose up & echo $! > edgex.pid
+	docker-compose up -d consul volume vault vault-worker kong-db kong-migration kong edgex-proxy mongo rulesengine device-virtual & echo $! > edgex.pid
 fi
 
 echo "Info: Invoking Ping Service."
