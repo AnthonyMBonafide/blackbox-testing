@@ -2,8 +2,8 @@
 
 NAMESFILE=$(dirname "$0")/files.sh
 
-COLLECTION_PATH="collections/support-scheduler.postman_collection.json"
-ENV_PATH="environment/support-scheduler-docker.postman_environment.json"
+COLLECTION_PATH="postman-test/collections/support-scheduler.postman_collection.json"
+ENV_PATH="postman-test/environment/support-scheduler.postman_environment.json"
 
 if [ -f $NAMESFILE ]; then
 
@@ -21,13 +21,13 @@ echo "[info] ---------- use docker-compose run newman ----------"
 
 echo "[info] ======================== Start run support scheduler tests ========================"
 
-docker-compose run --rm postman run ${COLLECTION_PATH} \
-    --folder="interval" --iteration-data="data/intervalData.json" --environment=${ENV_PATH} \
+newman run ${COLLECTION_PATH} \
+    --folder="interval" --iteration-data="postman-test/data/intervalData.json" --environment=${ENV_PATH} \
     --reporters="junit,cli"
 
 
-docker-compose run --rm postman run ${COLLECTION_PATH} \
-    --folder="intervalAction" --iteration-data="data/intervalActionData.json" --environment=${ENV_PATH} \
+newman run ${COLLECTION_PATH} \
+    --folder="intervalAction" --iteration-data="postman-test/data/intervalActionData.json" --environment=${ENV_PATH} \
     --reporters="junit,cli"
 
 

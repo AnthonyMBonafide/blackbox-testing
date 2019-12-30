@@ -254,7 +254,7 @@ Tests can now be executed on a per folder basis with the following syntax:
     $ newman run /path-to-blackbox-testing-directory/bin/postman-test/collections/collection_name.postman_collection
     .json
         --folder folder_name
-        -e bin/postman-test/environment/environment_name.postman_environment.json
+        -e bin/postman-test/postman-test/environment/environment_name.postman_environment.json
         -d bin/postman-test/data/data_name.json
 
 where "collection_name" is the name of the collection (usually the name of the service under test), the "folder_name" is
@@ -289,7 +289,7 @@ Import test data into Edgex
 
 .. image:: images/import-data-script.png
 
-2. Import the environment from **path/to/blackbox-testing/bin/postman-test/environment/core-data.postman_environment.json**
+2. Import the environment from **path/to/blackbox-testing/bin/postman-test/postman-test/environment/core-data.postman_environment.json**
 
 .. image:: images/import-env1.png
 .. image:: images/import-env2.png

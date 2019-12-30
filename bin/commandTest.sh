@@ -2,8 +2,8 @@
 
 NAMESFILE=$(dirname "$0")/files.sh
 
-COLLECTION_PATH="collections/core-command.postman_collection.json"
-ENV_PATH="environment/core-command-docker.postman_environment.json"
+COLLECTION_PATH="postman-test/collections/core-command.postman_collection.json"
+ENV_PATH="postman-test/environment/core-command.postman_environment.json"
 
 if [ -f $NAMESFILE ]; then 
 
@@ -19,19 +19,19 @@ echo "Info: Initiating Command Test."
 
 echo "[info] ---------- use docker-compose run newman ----------"
 
-docker-compose run --rm postman run ${COLLECTION_PATH} \
-    --folder="device" --iteration-data="data/coreCommandData.json" --environment=${ENV_PATH} \
+newman run ${COLLECTION_PATH} \
+    --folder="device" --iteration-data="postman-test/data/coreCommandData.json" --environment=${ENV_PATH} \
     --reporters="junit,cli"
 
-docker-compose run --rm postman run ${COLLECTION_PATH} \
-    --folder="device_error_4xx" --iteration-data="data/coreCommandData.json" --environment=${ENV_PATH} \
+newman run ${COLLECTION_PATH} \
+    --folder="device_error_4xx" --iteration-data="postman-test/data/coreCommandData.json" --environment=${ENV_PATH} \
     --reporters="junit,cli"
 
 #docker run --rm -v ~/${TEST_DIR}/postman-test/:/etc/newman --network=${DOCKER_NETWORK} postman/newman_ubuntu1404 run "${COLLECTION_PATH}" \
-#    --folder="device" --iteration-data="data/coreCommandData.json" --environment="${ENV_PATH}" \
+#    --folder="device" --iteration-data="postman-test/data/coreCommandData.json" --environment="${ENV_PATH}" \
 #    --reporters="junit,cli"
 #docker run --rm -v ~/${TEST_DIR}/postman-test/:/etc/newman --network=${DOCKER_NETWORK} postman/newman_ubuntu1404 run "${COLLECTION_PATH}" \
-#    --folder="device_error_4xx" --iteration-data="data/coreCommandData.json" --environment="${ENV_PATH}" \
+#    --folder="device_error_4xx" --iteration-data="postman-test/data/coreCommandData.json" --environment="${ENV_PATH}" \
 #    --reporters="junit,cli"
 
 

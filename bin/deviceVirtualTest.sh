@@ -2,8 +2,8 @@
 
 NAMESFILE=$(dirname "$0")/files.sh
 
-COLLECTION_PATH="collections/device-virtual.postman_collection.json"
-ENV_PATH="environment/device-virtual-docker.postman_environment.json"
+COLLECTION_PATH="postman-test/collections/device-virtual.postman_collection.json"
+ENV_PATH="postman-test/environment/device-virtual.postman_environment.json"
 
 if [ -f $NAMESFILE ]; then
 
@@ -19,7 +19,7 @@ echo "Info: Initiating DeviceVirtual Test."
 
 echo "[info] ---------- use docker-compose run newman ----------"
 
-docker-compose run --rm postman run ${COLLECTION_PATH} \
+newman run ${COLLECTION_PATH} \
     --environment=${ENV_PATH} --reporters="junit,cli"
 
 echo "Info:DeviceVirtual Test Completed."
